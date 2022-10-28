@@ -54,9 +54,9 @@ main()
 ```
 
 ## Examples
-* [Quick start SQLite example](./examples/quickStartSqlite.js)
-* [Quick start Postgres example](./examples/quickStartSqlite.js)
-* [After purchase campaign example](./examples/afterPurchaseCampaign.js)
+* [Quick start SQLite example](https://github.com/DanielZambelli/campaign-scheduler/blob/master/examples/quickStartSqlite.js)
+* [Quick start Postgres example](https://github.com/DanielZambelli/campaign-scheduler/blob/master/examples/quickStartPostgres.js)
+* [After purchase campaign example](https://github.com/DanielZambelli/campaign-scheduler/blob/master/examples/afterPurchaseCampaign.js)
 
 ## Background- The Problem
 Customers should receive a series of emails after a purchase. The first email should be sent immediately after the purchase event, and subsequence emails offset by two days but always sent at 10:00 in the morning. The system must support multiple customers at various time of purchase. See the tabel below.
