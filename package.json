@@ -1,6 +1,7 @@
 {
   "name": "campaign-scheduler",
-  "version": "4.0.2",
+  "version": "4.0.3",
+  "keywords": ["campaign-scheduler","campaign","scheduler","cron","queue","predefined schedule","sequence"],
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",

@@ -61,7 +61,7 @@ main()
 ## Background- The Problem
 Customers should receive a series of emails after a purchase. The first email should be sent immediately after the purchase event, and subsequence emails offset by two days but always sent at 10:00 in the morning. The system must support multiple customers at various time of purchase. See the tabel below.
 
-Checking spreadsheets and sending out emails manually is not exactly scalable, so why not automate it using the [after purchase campaign example](./examples/afterPurchaseCampaign.js).
+Checking spreadsheets and sending out emails manually is not exactly scalable, so why not automate it using the [after purchase campaign example](https://github.com/DanielZambelli/campaign-scheduler/blob/master/examples/afterPurchaseCampaign.js).
 
 | Customer| Purchase | Email1 | Email2 | Email3 |
 |---------|-----------|---------|---------|---------|
