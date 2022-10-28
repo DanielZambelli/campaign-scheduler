@@ -1,36 +1,41 @@
 const CampaignScheduler = require('campaign-scheduler')
-const sendEmail = async (opts) => console.log(`email contact ${opts.subjectId} using:`, opts)
+
+const callback = (opts) => {
+  switch(opts.callback.id){
+    case 'sendEmail':
+      console.log(`send email to contact ${opts.subject}`, opts)
+    default:
+      console.log('unsupported callback', opts)
+  }
+}
 
 const main = async () => {
 
-  const Cs = new CampaignScheduler({ callbacks: { sendEmail } })
+  const Cs = await new CampaignScheduler({ worker: { callback } }).init()
 
-  await Cs.init()
-
-  // defines campaign with actions
-  await Cs.upsertCampaign({
-    id: 'myCampaign1',
+  // define a template
+  await Cs.define({
+    id: 'emailCampaign1',
     active: true,
-    actionDefs: [
+    actions: [
       {
         id: 'action1',
         interval: { offset: '0days' },
-        callback: { id: 'sendEmail', view: 'emailTemplate1' },
+        callback: { id: 'sendEmail', view: 'emailTemplate1' }
       },
       {
         id: 'action2',
         interval: { offset: '2days' },
-        callback: { id: 'sendEmail', view: 'emailTemplate2' },
+        callback: { id: 'sendEmail', view: 'emailTemplate2' }
       },
     ],
   })
 
-  // schedules actions at the correct date time for contact 1
-  await Cs.schedule('myCampaign1', 'contact', 1)
+  // using campaign template to schedule actions for contact#1
+  await Cs.schedule('emailCampaign1', 'contact#1')
 
-  // polls and triggers actions at the right time. Action one will trigger
-  // immediately, action two will trigger 2 days later as per its interval.
-  Cs.addWorker()
+  // triggers action 1 right away, and action 2, two days later
+  Cs.start()
 
 }
 

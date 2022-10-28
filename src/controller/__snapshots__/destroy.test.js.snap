@@ -1,0 +1,390 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`destroy state 1`] = `
+{
+  "hash": "8b8a40bda1e98a9f4a8ca279221e14bb8504838a",
+  "state": {
+    "actions": [
+      {
+        "actionId": "action1",
+        "callbackId": "sendEmail",
+        "callbackOpts": {
+          "view": "emailTemplate1",
+        },
+        "campaignId": "campaign1",
+        "completedAt": null,
+        "expectedAt": "a few seconds ago",
+        "log": null,
+        "state": "pending",
+        "subject": "contact#1",
+      },
+      {
+        "actionId": "action1",
+        "callbackId": "sendEmail",
+        "callbackOpts": {
+          "view": "emailTemplate1",
+        },
+        "campaignId": "campaign1",
+        "completedAt": "a few seconds ago",
+        "expectedAt": "a few seconds ago",
+        "log": null,
+        "state": "completed",
+        "subject": "contact#2",
+      },
+      {
+        "actionId": "action1",
+        "callbackId": "sendEmail",
+        "callbackOpts": {
+          "view": "emailTemplate1",
+        },
+        "campaignId": "campaign3",
+        "completedAt": "a few seconds ago",
+        "expectedAt": "a few seconds ago",
+        "log": null,
+        "state": "completed",
+        "subject": "contact#5",
+      },
+      {
+        "actionId": "action2",
+        "callbackId": "sendEmail",
+        "callbackOpts": {
+          "view": "emailTemplate2",
+        },
+        "campaignId": "campaign3",
+        "completedAt": "a few seconds ago",
+        "expectedAt": "in a few seconds",
+        "log": null,
+        "state": "completed",
+        "subject": "contact#5",
+      },
+      {
+        "actionId": "action3",
+        "callbackId": "sendEmail",
+        "callbackOpts": {
+          "view": "emailTemplate3",
+        },
+        "campaignId": "campaign3",
+        "completedAt": null,
+        "expectedAt": "in a few seconds",
+        "log": null,
+        "state": "pending",
+        "subject": "contact#5",
+      },
+      {
+        "actionId": "action1",
+        "callbackId": "sendEmail",
+        "callbackOpts": {
+          "view": "emailTemplate1",
+        },
+        "campaignId": "campaign3",
+        "completedAt": "a few seconds ago",
+        "expectedAt": "a few seconds ago",
+        "log": null,
+        "state": "failed",
+        "subject": "contact#6",
+      },
+      {
+        "actionId": "action2",
+        "callbackId": "sendEmail",
+        "callbackOpts": {
+          "view": "emailTemplate2",
+        },
+        "campaignId": "campaign3",
+        "completedAt": "a few seconds ago",
+        "expectedAt": "in a few seconds",
+        "log": null,
+        "state": "failed",
+        "subject": "contact#6",
+      },
+      {
+        "actionId": "action3",
+        "callbackId": "sendEmail",
+        "callbackOpts": {
+          "view": "emailTemplate3",
+        },
+        "campaignId": "campaign3",
+        "completedAt": null,
+        "expectedAt": "in a few seconds",
+        "log": null,
+        "state": "pending",
+        "subject": "contact#6",
+      },
+    ],
+    "campaigns": [
+      {
+        "actions": [
+          {
+            "callback": {
+              "id": "sendEmail",
+              "view": "emailTemplate1",
+            },
+            "id": "action1",
+            "interval": {
+              "offset": "0seconds",
+            },
+          },
+        ],
+        "active": true,
+        "id": "campaign1",
+      },
+      {
+        "actions": [
+          {
+            "callback": {
+              "id": "sendEmail",
+              "view": "emailTemplate1",
+            },
+            "id": "action1",
+            "interval": {
+              "offset": "0seconds",
+            },
+          },
+          {
+            "callback": {
+              "id": "sendEmail",
+              "view": "emailTemplate2",
+            },
+            "id": "action2",
+            "interval": {
+              "offset": "1seconds",
+            },
+          },
+        ],
+        "active": false,
+        "id": "campaign2",
+      },
+      {
+        "actions": [
+          {
+            "callback": {
+              "id": "sendEmail",
+              "view": "emailTemplate1",
+            },
+            "id": "action1",
+            "interval": {
+              "offset": "0seconds",
+            },
+          },
+          {
+            "callback": {
+              "id": "sendEmail",
+              "view": "emailTemplate2",
+            },
+            "id": "action2",
+            "interval": {
+              "offset": "1seconds",
+            },
+          },
+          {
+            "callback": {
+              "id": "sendEmail",
+              "view": "emailTemplate3",
+            },
+            "id": "action3",
+            "interval": {
+              "offset": "2seconds",
+            },
+          },
+        ],
+        "active": true,
+        "id": "campaign3",
+      },
+    ],
+    "schedules": [
+      {
+        "active": true,
+        "campaignId": "campaign1",
+        "subject": "contact#1",
+      },
+      {
+        "active": true,
+        "campaignId": "campaign1",
+        "subject": "contact#2",
+      },
+      {
+        "active": false,
+        "campaignId": "campaign1",
+        "subject": "contact#3",
+      },
+      {
+        "active": false,
+        "campaignId": "campaign1",
+        "subject": "contact#4",
+      },
+      {
+        "active": true,
+        "campaignId": "campaign2",
+        "subject": "contact#1",
+      },
+      {
+        "active": true,
+        "campaignId": "campaign2",
+        "subject": "contact#2",
+      },
+      {
+        "active": false,
+        "campaignId": "campaign2",
+        "subject": "contact#3",
+      },
+      {
+        "active": false,
+        "campaignId": "campaign2",
+        "subject": "contact#4",
+      },
+      {
+        "active": false,
+        "campaignId": "campaign3",
+        "subject": "contact#7",
+      },
+      {
+        "active": false,
+        "campaignId": "campaign3",
+        "subject": "contact#8",
+      },
+      {
+        "active": true,
+        "campaignId": "campaign3",
+        "subject": "contact#5",
+      },
+      {
+        "active": true,
+        "campaignId": "campaign3",
+        "subject": "contact#6",
+      },
+    ],
+  },
+}
+`;
+
+exports[`destroy state 2`] = `
+{
+  "hash": "f354db4d5edee42bc3573436aea0b6b2948fe773",
+  "state": {
+    "actions": [
+      {
+        "actionId": "action1",
+        "callbackId": "sendEmail",
+        "callbackOpts": {
+          "view": "emailTemplate1",
+        },
+        "campaignId": "campaign1",
+        "completedAt": null,
+        "expectedAt": "a few seconds ago",
+        "log": null,
+        "state": "pending",
+        "subject": "contact#1",
+      },
+      {
+        "actionId": "action1",
+        "callbackId": "sendEmail",
+        "callbackOpts": {
+          "view": "emailTemplate1",
+        },
+        "campaignId": "campaign1",
+        "completedAt": "a few seconds ago",
+        "expectedAt": "a few seconds ago",
+        "log": null,
+        "state": "completed",
+        "subject": "contact#2",
+      },
+    ],
+    "campaigns": [
+      {
+        "actions": [
+          {
+            "callback": {
+              "id": "sendEmail",
+              "view": "emailTemplate1",
+            },
+            "id": "action1",
+            "interval": {
+              "offset": "0seconds",
+            },
+          },
+        ],
+        "active": true,
+        "id": "campaign1",
+      },
+      {
+        "actions": [
+          {
+            "callback": {
+              "id": "sendEmail",
+              "view": "emailTemplate1",
+            },
+            "id": "action1",
+            "interval": {
+              "offset": "0seconds",
+            },
+          },
+          {
+            "callback": {
+              "id": "sendEmail",
+              "view": "emailTemplate2",
+            },
+            "id": "action2",
+            "interval": {
+              "offset": "1seconds",
+            },
+          },
+        ],
+        "active": false,
+        "id": "campaign2",
+      },
+    ],
+    "schedules": [
+      {
+        "active": true,
+        "campaignId": "campaign1",
+        "subject": "contact#1",
+      },
+      {
+        "active": true,
+        "campaignId": "campaign1",
+        "subject": "contact#2",
+      },
+      {
+        "active": false,
+        "campaignId": "campaign1",
+        "subject": "contact#3",
+      },
+      {
+        "active": false,
+        "campaignId": "campaign1",
+        "subject": "contact#4",
+      },
+      {
+        "active": true,
+        "campaignId": "campaign2",
+        "subject": "contact#1",
+      },
+      {
+        "active": true,
+        "campaignId": "campaign2",
+        "subject": "contact#2",
+      },
+      {
+        "active": false,
+        "campaignId": "campaign2",
+        "subject": "contact#3",
+      },
+      {
+        "active": false,
+        "campaignId": "campaign2",
+        "subject": "contact#4",
+      },
+    ],
+  },
+}
+`;
+
+exports[`destroy state 3`] = `
+{
+  "hash": "d247e293a981620ae74edd241b91accb7b5a15cd",
+  "state": {
+    "actions": [],
+    "campaigns": [],
+    "schedules": [],
+  },
+}
+`;

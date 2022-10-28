@@ -1,0 +1,705 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`controller getActions 1`] = `
+{
+  "hash": "9b2263ff5af20b3f0c3f9e920fa4b3d124829f73",
+  "result": [
+    {
+      "actionId": "action1",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate1",
+      },
+      "campaignId": "campaign1",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#1",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action2",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate2",
+      },
+      "campaignId": "campaign1",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#1",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action3",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate3",
+      },
+      "campaignId": "campaign1",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#1",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action1",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate1",
+      },
+      "campaignId": "campaign1",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#2",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action2",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate2",
+      },
+      "campaignId": "campaign1",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#2",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action3",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate3",
+      },
+      "campaignId": "campaign1",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#2",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action1",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate1",
+      },
+      "campaignId": "campaign3",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#7",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action2",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate2",
+      },
+      "campaignId": "campaign3",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "in a few seconds",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#7",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action3",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate3",
+      },
+      "campaignId": "campaign3",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#7",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action4",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate4",
+      },
+      "campaignId": "campaign3",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#7",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action5",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate5",
+      },
+      "campaignId": "campaign3",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#7",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action6",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate6",
+      },
+      "campaignId": "campaign3",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#7",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action1",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate1",
+      },
+      "campaignId": "campaign3",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#8",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action2",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate2",
+      },
+      "campaignId": "campaign3",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "in a few seconds",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#8",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action3",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate3",
+      },
+      "campaignId": "campaign3",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#8",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action4",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate4",
+      },
+      "campaignId": "campaign3",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#8",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action5",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate5",
+      },
+      "campaignId": "campaign3",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#8",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action6",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate6",
+      },
+      "campaignId": "campaign3",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#8",
+      "updatedAt": "a few seconds ago",
+    },
+  ],
+}
+`;
+
+exports[`controller getActions 2`] = `
+{
+  "hash": "989db2448f309bfdd99b513f37c84b8f5794d2b5",
+  "result": [],
+}
+`;
+
+exports[`controller getActions 3`] = `
+{
+  "hash": "989db2448f309bfdd99b513f37c84b8f5794d2b5",
+  "result": [],
+}
+`;
+
+exports[`controller getActions 4`] = `
+{
+  "hash": "dbfc287d8a7ba2e132a2f5af17d20c3a46c53fc4",
+  "result": [
+    {
+      "actionId": "action1",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate1",
+      },
+      "campaignId": "campaign1",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#1",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action2",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate2",
+      },
+      "campaignId": "campaign1",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#1",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actionId": "action3",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate3",
+      },
+      "campaignId": "campaign1",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#1",
+      "updatedAt": "a few seconds ago",
+    },
+  ],
+}
+`;
+
+exports[`controller getCampaigns 1`] = `
+{
+  "hash": "beb6212f6c9ad377794134c78b1ca554064e4168",
+  "result": [
+    {
+      "actions": [
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate1",
+          },
+          "id": "action1",
+          "interval": {
+            "offset": "0seconds",
+          },
+        },
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate2",
+          },
+          "id": "action2",
+          "interval": {
+            "offset": "0seconds",
+          },
+        },
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate3",
+          },
+          "id": "action3",
+          "interval": {
+            "offset": "0seconds",
+          },
+        },
+      ],
+      "active": true,
+      "createdAt": "a few seconds ago",
+      "id": "campaign1",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actions": [
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate1",
+          },
+          "id": "action1",
+          "interval": {
+            "offset": "1hours",
+          },
+        },
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate2",
+          },
+          "id": "action2",
+          "interval": {
+            "offset": "2hours",
+          },
+        },
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate3",
+          },
+          "id": "action3",
+          "interval": {
+            "offset": "3hours",
+          },
+        },
+      ],
+      "active": false,
+      "createdAt": "a few seconds ago",
+      "id": "campaign2",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "actions": [
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate1",
+          },
+          "id": "action1",
+          "interval": {
+            "offset": "0seconds",
+          },
+        },
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate2",
+          },
+          "id": "action2",
+          "interval": {
+            "offset": "1seconds",
+          },
+        },
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate3",
+          },
+          "id": "action3",
+          "interval": {
+            "offset": "1.1seconds",
+          },
+        },
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate4",
+          },
+          "id": "action4",
+          "interval": {
+            "offset": "1.2seconds",
+          },
+        },
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate5",
+          },
+          "id": "action5",
+          "interval": {
+            "offset": "1.3seconds",
+          },
+        },
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate6",
+          },
+          "id": "action6",
+          "interval": {
+            "offset": "1.4seconds",
+          },
+        },
+      ],
+      "active": true,
+      "createdAt": "a few seconds ago",
+      "id": "campaign3",
+      "updatedAt": "a few seconds ago",
+    },
+  ],
+}
+`;
+
+exports[`controller getCampaigns 2`] = `
+{
+  "hash": "80f9ff6893a8d47e8a1a3176eb1a0bf51371935d",
+  "result": [
+    {
+      "actions": [
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate1",
+          },
+          "id": "action1",
+          "interval": {
+            "offset": "0seconds",
+          },
+        },
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate2",
+          },
+          "id": "action2",
+          "interval": {
+            "offset": "0seconds",
+          },
+        },
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate3",
+          },
+          "id": "action3",
+          "interval": {
+            "offset": "0seconds",
+          },
+        },
+      ],
+      "active": true,
+      "createdAt": "a few seconds ago",
+      "id": "campaign1",
+      "updatedAt": "a few seconds ago",
+    },
+  ],
+}
+`;
+
+exports[`controller getCampaigns 3`] = `
+{
+  "hash": "16fde53aa036861a6f841cfdee36822e41e9853c",
+  "result": [
+    {
+      "actions": [
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate1",
+          },
+          "id": "action1",
+          "interval": {
+            "offset": "1hours",
+          },
+        },
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate2",
+          },
+          "id": "action2",
+          "interval": {
+            "offset": "2hours",
+          },
+        },
+        {
+          "callback": {
+            "id": "sendEmail",
+            "view": "emailTemplate3",
+          },
+          "id": "action3",
+          "interval": {
+            "offset": "3hours",
+          },
+        },
+      ],
+      "active": false,
+      "createdAt": "a few seconds ago",
+      "id": "campaign2",
+      "updatedAt": "a few seconds ago",
+    },
+  ],
+}
+`;
+
+exports[`controller getSchedules 1`] = `
+{
+  "hash": "9c0bd531b18b2f778c91104eb7bb979b66326909",
+  "result": [
+    {
+      "active": true,
+      "campaignId": "campaign1",
+      "createdAt": "a few seconds ago",
+      "subject": "contact#1",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "active": true,
+      "campaignId": "campaign1",
+      "createdAt": "a few seconds ago",
+      "subject": "contact#2",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "active": false,
+      "campaignId": "campaign1",
+      "createdAt": "a few seconds ago",
+      "subject": "contact#3",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "active": false,
+      "campaignId": "campaign1",
+      "createdAt": "a few seconds ago",
+      "subject": "contact#4",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "active": true,
+      "campaignId": "campaign2",
+      "createdAt": "a few seconds ago",
+      "subject": "contact#5",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "active": true,
+      "campaignId": "campaign2",
+      "createdAt": "a few seconds ago",
+      "subject": "contact#6",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "active": true,
+      "campaignId": "campaign3",
+      "createdAt": "a few seconds ago",
+      "subject": "contact#7",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "active": true,
+      "campaignId": "campaign3",
+      "createdAt": "a few seconds ago",
+      "subject": "contact#8",
+      "updatedAt": "a few seconds ago",
+    },
+  ],
+}
+`;
+
+exports[`controller getSchedules 2`] = `
+{
+  "hash": "d2bd3adb4323b87486227173a2891846e0dc3a5a",
+  "result": [
+    {
+      "active": true,
+      "campaignId": "campaign1",
+      "createdAt": "a few seconds ago",
+      "subject": "contact#1",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "active": true,
+      "campaignId": "campaign1",
+      "createdAt": "a few seconds ago",
+      "subject": "contact#2",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "active": false,
+      "campaignId": "campaign1",
+      "createdAt": "a few seconds ago",
+      "subject": "contact#3",
+      "updatedAt": "a few seconds ago",
+    },
+  ],
+}
+`;
+
+exports[`controller getSchedules 3`] = `
+{
+  "hash": "8a857ce6bff31dcdead8296a5a53c962ae07c63d",
+  "result": [
+    {
+      "active": true,
+      "campaignId": "campaign1",
+      "createdAt": "a few seconds ago",
+      "subject": "contact#1",
+      "updatedAt": "a few seconds ago",
+    },
+    {
+      "active": true,
+      "campaignId": "campaign1",
+      "createdAt": "a few seconds ago",
+      "subject": "contact#2",
+      "updatedAt": "a few seconds ago",
+    },
+  ],
+}
+`;

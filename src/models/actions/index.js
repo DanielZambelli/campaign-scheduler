@@ -1,36 +1,32 @@
 const {Model, DataTypes, Op} = require('sequelize')
 const moment = require('moment')
+const {getSetStringify} = require('../../utils/getSetStringify')
 
-const initActionsModel = (Db) => {
+const initActionsModel = (db) => {
   class actions extends Model {}
   actions.init(
     {
       id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
       state: { type: DataTypes.STRING, defaultValue: 'pending', validate: { isIn: [['pending','processing','completed','failed']] } },
       subject: { type: DataTypes.STRING, allowNull: false, unique: 'unique_campaign_action' },
-      subjectId: { type: DataTypes.INTEGER, allowNull: false, unique: 'unique_campaign_action' },
       campaignId: { type: DataTypes.STRING, allowNull: false, unique: 'unique_campaign_action' },
       actionId: { type: DataTypes.STRING, allowNull: false, unique: 'unique_campaign_action' },
-      callback: { type: DataTypes.JSON, allowNull: false },
+      callbackId: { type: DataTypes.STRING, allowNull: false },
+      callbackOpts: { type: DataTypes.TEXT, ...getSetStringify('callbackOpts') },
       expectedAt: { type: DataTypes.DATE, allowNull: false },
       completedAt: { type: DataTypes.DATE },
+      log: { type: DataTypes.STRING },
     },
     {
-      sequelize: Db.conn,
-      schema: Db.opts.schema,
+      sequelize: db.Connection,
+      schema: db.opts.schema,
       modelName: 'cs_actions',
       freezeTableName: true,
       underscored: true,
-      validate: {
-        validator(){
-          if(this.callback && !this.callback?.id)
-            throw new Error('callback requires id')
-        },
-      }
     }
   )
 
-  actions.poll = function(windowSeconds, limit, campaignId=undefined){
+  actions.poll = function(windowSeconds, limit){
     return this.sequelize.transaction(async (transaction) => {
       const query = {
         where: { state: 'pending', expectedAt: { [Op.lte]: moment().add(windowSeconds, 'seconds').toDate() } },
@@ -38,7 +34,6 @@ const initActionsModel = (Db) => {
         limit, transaction,
         skipLocked: true, lock: true,
       }
-      if(campaignId) query.where.campaignId = campaignId
       const actions = await this.findAll(query)
       await this.update({ state: 'processing' }, { where: { id: actions.map(e => e.id) }, transaction })
       return actions

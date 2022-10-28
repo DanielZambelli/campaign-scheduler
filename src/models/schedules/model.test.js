@@ -1,32 +1,36 @@
 require('../../utils/test')
 const TEST = 'schedules_model'
 
+const schedule = {
+  subject: 'contact#1',
+  campaignId: 'campaign1'
+}
+
 describe(TEST, () => {
 
-  beforeEach(initCtl(TEST))
+  beforeEach(init(TEST))
 
   afterEach(destroy)
 
   it('model', async () => {
     const res = [
-      ctl.Db.Schedules.rawAttributes,
-      ctl.Db.Schedules.associations,
-      ctl.Db.Schedules.underscored,
-      ctl.Db.Schedules.tableName,
+      ctl.db.Schedules.rawAttributes,
+      ctl.db.Schedules.associations,
+      ctl.db.Schedules.underscored,
+      ctl.db.Schedules.tableName,
     ]
     expect(res).toMatchSnapshot()
   })
 
   it('unique', async () => {
-    const obj = { subject: 'contact', subjectId: 1, campaignId: 'campaign1' }
-    await ctl.Db.Schedules.create(obj)
-    res = () => ctl.Db.Schedules.create(obj)
-    expect(res).rejects.toThrow('Validation error')
+    await ctl.db.Schedules.create(schedule)
+    const res = await ctl.db.Schedules.create(schedule).catch(e => e.message)
+    expect(res).toEqual('Validation error')
   })
 
   it('unique', async () => {
-    await ctl.Db.Schedules.create({ subject: 'contact', subjectId: 1, campaignId: 'campaign1' })
-    await ctl.Db.Schedules.create({ subject: 'portal', subjectId: 1, campaignId: 'campaign1'})
+    await ctl.db.Schedules.create(schedule)
+    await ctl.db.Schedules.create({ ...schedule, subject: 'portal#1' })
   })
 
 })

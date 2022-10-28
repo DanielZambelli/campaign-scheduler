@@ -1,9 +1,15 @@
 const {reconcileUnschedule:reconcile} = require('../utils/reconciliate')
 
-const unschedule = async function(campaignId, subject, subjectId){
+/**
+ * removes scheduled pending actions for a subject:
+ * @param {string} campaignId
+ * @param {string} subject
+ * @returns Promise
+ */
+const unschedule = async function(campaignId, subject){
 
-  if(!campaignId || !subject || !subjectId) throw new Error('requires campaignId, subject, subjectId')
-  const schedule = await this.Db.Schedules.findOne({ where: { campaignId, subject, subjectId } })
+  if(!campaignId || !subject) throw new Error('requires campaignId and subject')
+  const schedule = await this.db.Schedules.findOne({ where: { campaignId, subject } })
   if(!schedule) throw new Error('schedule not found')
 
   if(schedule.active){
@@ -11,7 +17,7 @@ const unschedule = async function(campaignId, subject, subjectId){
     await schedule.save()
   }
 
-  const actionsDestroyed = await reconcile.bind(this)(campaignId, subject, subjectId).catch(e => console.log(e))
+  const actionsDestroyed = await reconcile.bind(this)(campaignId, subject).catch(e => console.log(e))
 
   return { schedule: schedule.toJSON(), actionsDestroyed }
 }

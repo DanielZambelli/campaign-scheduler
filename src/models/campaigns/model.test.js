@@ -1,43 +1,41 @@
 require('../../utils/test')
 const TEST = 'campaigns_model'
 
+const campaign = {
+  id: 'test1',
+  active: true,
+  actions: [ { id: 'a1', interval: { offset: '1hour' }, callback: { id: 'test', view: 'emailTemplate1' } } ]
+}
+
 describe(TEST, () => {
 
-  beforeAll(initCtl(TEST))
+  beforeEach(init(TEST))
 
-  afterAll(destroy)
+  afterEach(destroy)
 
   it('model', async () => {
     const res = [
-      ctl.Db.Campaigns.rawAttributes,
-      ctl.Db.Campaigns.associations,
-      ctl.Db.Campaigns.underscored,
-      ctl.Db.Campaigns.tableName,
+      ctl.db.Campaigns.rawAttributes,
+      ctl.db.Campaigns.associations,
+      ctl.db.Campaigns.underscored,
+      ctl.db.Campaigns.tableName,
     ]
     expect(res).toMatchSnapshot()
   })
 
-  it('validate', async () => {
-    const campaign = ctl.Db.Campaigns.build({
-      id: 'test1', active: true, actionDefs: [ { id: 'a1' } ]
-    })
-    const res = await new Promise(res => res(campaign.validate())).catch(e => e.message)
-    expect(res).toEqual('Validation error: actionDefs item requires options')
+  it('create', async () => {
+    const res = await ctl.db.Campaigns.create({...campaign, actions: [ { id: 'a1' } ] }).catch(e => e.message)
+    expect(res).toEqual('Validation error: actions item requires options')
   })
 
-  it('validate', async () => {
-    const campaign = ctl.Db.Campaigns.build({
-      id: 'test1', active: true, actionDefs: [
-        { id: 'a1', interval: { offset: '1hour' }, callback: { id: 'test' } }
-      ]
-    })
-    const res = await new Promise(res => res(campaign.validate())).then(() => null).catch(e => e.message)
-    expect(res).toEqual(null)
+  it('create', async () => {
+    const res = await ctl.db.Campaigns.create(campaign).then(() => true)
+    expect(res).toEqual(true)
   })
 
-  it('validate', async () => {
-    const res = ctl.Db.Campaigns.build()
-    expect(res.getSchedule).toBeDefined()
+  it('defined', async () => {
+    const res = ctl.db.Campaigns.build()
+    expect(res.calculateActions).toBeDefined()
   })
 
 })
