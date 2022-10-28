@@ -2,7 +2,7 @@
 **Run predefined campaign actions better than anyone else!** Useful for email campaigns, posting on social and use cases that should occur on a predefined schedule or sequence.
 
 <p align="left">
-  <img width="150px" src="/icon.png" />
+  <img width="150px" src="https://raw.githubusercontent.com/DanielZambelli/campaign-scheduler/master/icon.png" />
 </p>
 
 ## Get started
