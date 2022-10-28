@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`parseQuery returns 1`] = `
+{
+  "where": {},
+}
+`;
+
+exports[`parseQuery returns 2`] = `
+{
+  "where": {},
+}
+`;
+
+exports[`parseQuery returns 3`] = `
+{
+  "where": {
+    "name": false,
+  },
+}
+`;
+
+exports[`parseQuery returns 4`] = `
+{
+  "where": {},
+}
+`;
+
+exports[`parseQuery returns 5`] = `
+{
+  "where": {
+    "lastName": "doe",
+    "name": "john",
+  },
+}
+`;
+
+exports[`parseQuery returns 6`] = `
+{
+  "attributes": [
+    "name",
+  ],
+  "limit": 1,
+  "order": [
+    [
+      "id",
+      "ASC",
+    ],
+  ],
+  "where": {
+    "lastName": {
+      Symbol(like): "doe",
+    },
+    "name": "john",
+  },
+}
+`;
+
+exports[`parseQuery returns 7`] = `
+{
+  "attributes": [
+    "name",
+    "lastNane",
+  ],
+  "limit": 25,
+  "where": {
+    "age": {
+      Symbol(gte): 25,
+    },
+    "lastName": {
+      Symbol(like): "doe",
+    },
+    "name": "john",
+  },
+}
+`;

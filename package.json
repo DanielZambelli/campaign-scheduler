@@ -1,0 +1,30 @@
+{
+  "name": "campaign-scheduler",
+  "version": "4.0.0",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "db": "docker run --name cs_pg --rm -e POSTGRES_PASSWORD=admin -p 8001:5432 -d postgres:latest && docker run --name cs_mysql --rm -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=db -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin -p 8002:3306 -d mysql:latest",
+    "db:stop": "docker stop cs_pg && docker stop cs_mysql",
+    "test:sqlite": "CS_DB='{ \"dialect\": \"sqlite\" }' jest",
+    "test:postgres": "CS_DB='{ \"dialect\": \"postgres\", \"host\": \"localhost\", \"port\": 8001, \"username\": \"postgres\", \"password\": \"admin\", \"database\": \"postgres\" }' jest",
+    "test:mysql": "CS_DB='{ \"dialect\": \"mysql\", \"host\": \"localhost\", \"port\": 8002, \"username\": \"admin\", \"password\": \"admin\", \"database\": \"db\" }' jest",
+    "test:all": "npm run test:sqlite && npm run test:postgres && npm run test:mysql"
+  },
+  "dependencies": {
+    "cron": "2.1.0",
+    "moment": "2.29.4",
+    "object-hash": "3.0.0",
+    "p-queue": "6.6.2",
+    "sequelize": "6.21.4",
+    "uuid": "9.0.0"
+  },
+  "devDependencies": {
+    "jest": "29.0.3",
+    "mysql2": "2.3.3",
+    "pg": "8.8.0",
+    "pg-hstore": "2.3.4",
+    "sqlite3": "5.0.11",
+    "mariadb": "3.0.2"
+  }
+}
