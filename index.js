@@ -24,9 +24,9 @@ class CampaignScheduler {
    */
   constructor(opts={}) {
     if(!opts.db) opts.db = {}
-    if(!opts.db.connectionString || opts.db.connectionString?.match(/sqlite/ig)){
+    if(!opts.db.connectionString){
       if(!opts.db.dialect) opts.db.dialect = 'sqlite'
-      if(!opts.db.storage) opts.db.storage = __dirname+'/tmp/db.sqlite'
+      if(opts.db.dialect === 'sqlite' && !opts.db.storage) opts.db.storage = __dirname+'/tmp/db.sqlite'
     }
     if(!opts.db.logging) opts.db.logging = false
     if(opts.db.schema?.match(/[^a-z\d_]/g)) throw new Error(`schema requires lowercased a-z`)

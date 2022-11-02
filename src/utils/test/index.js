@@ -17,9 +17,14 @@ global.init = (testId, seed=undefined, opts={}) => async () => {
   if(process.env.CS_DB) opts.db = JSON.parse(process.env.CS_DB)
   else if(process.env.CS_DB_STR) opts.db = { connectionString: process.env.CS_DB_STR }
   else opts.db = { "dialect": "sqlite" }
+
+  if(opts.db?.connectionString.match(/sqlite/ig) || opts.db.dialect==='sqlite')
+    opts.db.storage = __dirname+`/../../../tmp/db_${testId}.sqlite`
+
   opts.db.schema = `test_${testId}`
   opts.db.force = true
-  opts.db.makeDestroy = true
+  opts.db.allowDestroy = true
+  opts.db.logging = false
 
   // set worker
   if(!opts.worker) opts.worker = {}
@@ -33,15 +38,13 @@ global.init = (testId, seed=undefined, opts={}) => async () => {
 
   // init
   global.ctl = new Controller(opts)
-  if(ctl.opts.db.dialect==='sqlite') ctl.opts.db.storage = __dirname+`/../../../tmp/db_${testId}.sqlite`
   await ctl.init()
-
   if(seed) await seed(ctl)
 }
 
-global.destroy = () => {
+global.destroy = async () => {
   invoked = []
-  ctl.db.destroy()
+  await ctl.db.destroy()
 }
 
 global.getState = async ({campaignId=undefined, contactId=undefined, actionsId=undefined}={}) => {

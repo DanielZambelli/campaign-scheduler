@@ -32,7 +32,7 @@ class DbContext{
   }
 
   async destroy(){
-    if(!this.opts.makeDestroy) return
+    if(!this.opts.allowDestroy) return
     if(this.opts.schema) await this.Connection.dropSchema(this.opts.schema).catch(rethrow)
     else{
       await Promise.all([
