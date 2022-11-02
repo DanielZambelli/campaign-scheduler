@@ -14,10 +14,9 @@ npm install campaign-scheduler
 
 ### Quick Start
 ``` js
-// defaults to store state in a local sqlite file
-const Cs = await new CampaignScheduler()
+const Cs = await new CampaignScheduler({ worker: { callback } }).init()
 
-// define a template 
+// define a template
 await Cs.define({
   id: 'emailCampaign1',
   active: true,
@@ -38,10 +37,8 @@ await Cs.define({
 // using campaign template to schedule actions for contact#1
 await Cs.schedule('emailCampaign1', 'contact#1')
 
-// triggers action 1 right away and action 2, two days later
-Cs.start((actionId, opts)=> {
-  console.log(`send email to ${opts.subject} using view ${opts.view}`)
-})
+// triggers action 1 right away, and action 2, two days later
+Cs.start()
 ```
 
 ## Background- The challenge

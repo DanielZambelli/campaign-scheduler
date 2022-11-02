@@ -37,13 +37,13 @@ const main = async () => {
   })
 
   // on day1 Jane makes a purchase
-  await Cs.schedule('emailCampaign1', 'contact', 1)
+  await Cs.schedule('emailCampaign1', 'contact#1')
 
   // on day2 Julie makes a purchase
-  await Cs.schedule('emailCampaign1', 'contact', 2)
+  await Cs.schedule('emailCampaign1', 'contact#2')
 
   // on day5 Jenny makes a purchase
-  await Cs.schedule('emailCampaign1', 'contact', 3)
+  await Cs.schedule('emailCampaign1', 'contact#3')
 
   // polls and triggers actions at the right time
   Cs.start()
