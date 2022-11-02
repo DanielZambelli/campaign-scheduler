@@ -1,0 +1,598 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`define reconciliates activated 1`] = `
+{
+  "hash": "32f8ceee2fc83217c055917125903c96b0ea0d5d",
+  "state": {
+    "actions": [
+      {
+        "actionId": "action1",
+        "callbackId": "sendSms",
+        "callbackOpts": {
+          "view": "smsTemplate1",
+        },
+        "campaignId": "campaign2",
+        "completedAt": null,
+        "expectedAt": "in a day",
+        "log": null,
+        "state": "pending",
+        "subject": "contact#1",
+      },
+      {
+        "actionId": "action2",
+        "callbackId": "sendSms",
+        "callbackOpts": {
+          "view": "smsTemplate2",
+        },
+        "campaignId": "campaign2",
+        "completedAt": null,
+        "expectedAt": "in 2 days",
+        "log": null,
+        "state": "pending",
+        "subject": "contact#1",
+      },
+      {
+        "actionId": "action1",
+        "callbackId": "sendSms",
+        "callbackOpts": {
+          "view": "smsTemplate1",
+        },
+        "campaignId": "campaign2",
+        "completedAt": null,
+        "expectedAt": "in a day",
+        "log": null,
+        "state": "pending",
+        "subject": "contact#2",
+      },
+      {
+        "actionId": "action2",
+        "callbackId": "sendSms",
+        "callbackOpts": {
+          "view": "smsTemplate2",
+        },
+        "campaignId": "campaign2",
+        "completedAt": null,
+        "expectedAt": "in 2 days",
+        "log": null,
+        "state": "pending",
+        "subject": "contact#2",
+      },
+    ],
+    "campaigns": [
+      {
+        "actions": [
+          {
+            "callback": {
+              "id": "sendSms",
+              "view": "smsTemplate1",
+            },
+            "id": "action1",
+            "interval": {
+              "offset": "1day",
+            },
+          },
+          {
+            "callback": {
+              "id": "sendSms",
+              "view": "smsTemplate2",
+            },
+            "id": "action2",
+            "interval": {
+              "offset": "2days",
+            },
+          },
+        ],
+        "active": true,
+        "id": "campaign2",
+      },
+    ],
+    "schedules": [
+      {
+        "active": true,
+        "campaignId": "campaign2",
+        "subject": "contact#1",
+      },
+      {
+        "active": true,
+        "campaignId": "campaign2",
+        "subject": "contact#2",
+      },
+      {
+        "active": false,
+        "campaignId": "campaign2",
+        "subject": "contact#3",
+      },
+    ],
+  },
+}
+`;
+
+exports[`define reconciliates active 1`] = `
+{
+  "hash": "bbdb9c4047a7714e06187bb94babf0b5aac9ec01",
+  "state": {
+    "actions": [
+      {
+        "actionId": "action1",
+        "callbackId": "sendEmail",
+        "callbackOpts": {
+          "view": "emailTemplate1",
+        },
+        "campaignId": "campaign3",
+        "completedAt": null,
+        "expectedAt": "in a day",
+        "log": null,
+        "state": "completed",
+        "subject": "contact#1",
+      },
+      {
+        "actionId": "action1",
+        "callbackId": "sendEmail",
+        "callbackOpts": {
+          "view": "emailTemplate1",
+        },
+        "campaignId": "campaign3",
+        "completedAt": null,
+        "expectedAt": "in a day",
+        "log": null,
+        "state": "completed",
+        "subject": "contact#2",
+      },
+      {
+        "actionId": "action2",
+        "callbackId": "sendSms",
+        "callbackOpts": {
+          "view": "smsTemplate2",
+        },
+        "campaignId": "campaign3",
+        "completedAt": null,
+        "expectedAt": "in 2 days",
+        "log": null,
+        "state": "pending",
+        "subject": "contact#1",
+      },
+      {
+        "actionId": "action3",
+        "callbackId": "sendSms",
+        "callbackOpts": {
+          "view": "smsTemplate3",
+        },
+        "campaignId": "campaign3",
+        "completedAt": null,
+        "expectedAt": "in 3 days",
+        "log": null,
+        "state": "pending",
+        "subject": "contact#1",
+      },
+      {
+        "actionId": "action2",
+        "callbackId": "sendSms",
+        "callbackOpts": {
+          "view": "smsTemplate2",
+        },
+        "campaignId": "campaign3",
+        "completedAt": null,
+        "expectedAt": "in 2 days",
+        "log": null,
+        "state": "pending",
+        "subject": "contact#2",
+      },
+      {
+        "actionId": "action3",
+        "callbackId": "sendSms",
+        "callbackOpts": {
+          "view": "smsTemplate3",
+        },
+        "campaignId": "campaign3",
+        "completedAt": null,
+        "expectedAt": "in 3 days",
+        "log": null,
+        "state": "pending",
+        "subject": "contact#2",
+      },
+    ],
+    "campaigns": [
+      {
+        "actions": [
+          {
+            "callback": {
+              "id": "sendSms",
+              "view": "smsTemplate1",
+            },
+            "id": "action1",
+            "interval": {
+              "offset": "1day",
+            },
+          },
+          {
+            "callback": {
+              "id": "sendSms",
+              "view": "smsTemplate2",
+            },
+            "id": "action2",
+            "interval": {
+              "offset": "2days",
+            },
+          },
+          {
+            "callback": {
+              "id": "sendSms",
+              "view": "smsTemplate3",
+            },
+            "id": "action3",
+            "interval": {
+              "offset": "3days",
+            },
+          },
+        ],
+        "active": true,
+        "id": "campaign3",
+      },
+    ],
+    "schedules": [
+      {
+        "active": true,
+        "campaignId": "campaign3",
+        "subject": "contact#1",
+      },
+      {
+        "active": true,
+        "campaignId": "campaign3",
+        "subject": "contact#2",
+      },
+    ],
+  },
+}
+`;
+
+exports[`define reconciliates inactivated 1`] = `
+{
+  "hash": "6c96ce4db1f193b0cfc14ef3c904481212a3fff6",
+  "state": {
+    "actions": [
+      {
+        "actionId": "action1",
+        "callbackId": "sendEmail",
+        "callbackOpts": {
+          "view": "emailTemplate1",
+        },
+        "campaignId": "campaign1",
+        "completedAt": null,
+        "expectedAt": "in an hour",
+        "log": null,
+        "state": "completed",
+        "subject": "contact#2",
+      },
+    ],
+    "campaigns": [
+      {
+        "actions": [
+          {
+            "callback": {
+              "id": "sendSms",
+              "view": "smsTemplate1",
+            },
+            "id": "action1",
+            "interval": {
+              "offset": "1day",
+            },
+          },
+          {
+            "callback": {
+              "id": "sendSms",
+              "view": "smsTemplate2",
+            },
+            "id": "action2",
+            "interval": {
+              "offset": "2days",
+            },
+          },
+          {
+            "callback": {
+              "id": "sendSms",
+              "view": "smsTemplate3",
+            },
+            "id": "action3",
+            "interval": {
+              "offset": "3days",
+            },
+          },
+        ],
+        "active": false,
+        "id": "campaign1",
+      },
+    ],
+    "schedules": [
+      {
+        "active": true,
+        "campaignId": "campaign1",
+        "subject": "contact#1",
+      },
+      {
+        "active": true,
+        "campaignId": "campaign1",
+        "subject": "contact#2",
+      },
+    ],
+  },
+}
+`;
+
+exports[`define reconciliates inactive 1`] = `
+{
+  "hash": "fc7176698a346d5d7a5515541089503af7c6c827",
+  "state": {
+    "actions": [],
+    "campaigns": [
+      {
+        "actions": [
+          {
+            "callback": {
+              "id": "sendEmail",
+              "view": "emailTemplate1",
+            },
+            "id": "action1",
+            "interval": {
+              "offset": "1hours",
+            },
+          },
+        ],
+        "active": true,
+        "id": "campaign1",
+      },
+      {
+        "actions": [
+          {
+            "callback": {
+              "id": "sendEmail",
+              "opts": {
+                "view": "template1",
+              },
+            },
+            "id": "action3",
+            "interval": {
+              "offset": "0hours",
+            },
+          },
+        ],
+        "active": false,
+        "id": "campaign2",
+      },
+      {
+        "actions": [
+          {
+            "callback": {
+              "id": "sendEmail",
+              "view": "emailTemplate1",
+            },
+            "id": "action1",
+            "interval": {
+              "offset": "1days",
+            },
+          },
+          {
+            "callback": {
+              "id": "sendEmail",
+              "view": "emailTemplate1",
+            },
+            "id": "action2",
+            "interval": {
+              "offset": "2days",
+            },
+          },
+        ],
+        "active": true,
+        "id": "campaign3",
+      },
+    ],
+    "schedules": [
+      {
+        "active": true,
+        "campaignId": "campaign2",
+        "subject": "contact#1",
+      },
+      {
+        "active": false,
+        "campaignId": "campaign2",
+        "subject": "contact#2",
+      },
+    ],
+  },
+}
+`;
+
+exports[`define returns 1`] = `
+{
+  "hash": "78ffda5241ce7e819be150994e940b208769a01f",
+  "result": {
+    "actions": [
+      {
+        "callback": {
+          "id": "sendEmail",
+          "opts": {
+            "view": "template1",
+          },
+        },
+        "id": "action1",
+        "interval": {
+          "offset": "1hours",
+        },
+      },
+    ],
+    "active": true,
+    "createdAt": "a few seconds ago",
+    "id": "myCampaign",
+    "updatedAt": "a few seconds ago",
+  },
+}
+`;
+
+exports[`define returns 2`] = `
+{
+  "hash": "849fad3564881defe576d1cb94bee2c140cd6d6c",
+  "result": {
+    "actions": [
+      {
+        "callback": {
+          "id": "sendEmail",
+          "opts": {
+            "view": "template1",
+          },
+        },
+        "id": "action1",
+        "interval": {
+          "offset": "1hours",
+        },
+      },
+    ],
+    "active": false,
+    "createdAt": "a few seconds ago",
+    "id": "myCampaign",
+    "updatedAt": "a few seconds ago",
+  },
+}
+`;
+
+exports[`define state 1`] = `
+{
+  "hash": "b0bb5da67bec816e6bbaba8f6deecac3388a7867",
+  "state": {
+    "actions": [],
+    "campaigns": [
+      {
+        "actions": [
+          {
+            "callback": {
+              "id": "sendEmail",
+              "opts": {
+                "view": "template1",
+              },
+            },
+            "id": "action1",
+            "interval": {
+              "offset": "1hours",
+            },
+          },
+        ],
+        "active": true,
+        "id": "myCampaign",
+      },
+    ],
+    "schedules": [],
+  },
+}
+`;
+
+exports[`define state 2`] = `
+{
+  "hash": "9b69133e10e5a97c65a6f5a8c56e28a0daaf5af5",
+  "state": {
+    "actions": [],
+    "campaigns": [
+      {
+        "actions": [
+          {
+            "callback": {
+              "id": "sendEmail",
+              "opts": {
+                "view": "template2",
+              },
+            },
+            "id": "action2",
+            "interval": {
+              "offset": "2hours",
+            },
+          },
+        ],
+        "active": false,
+        "id": "myCampaign",
+      },
+    ],
+    "schedules": [],
+  },
+}
+`;
+
+exports[`define state 3`] = `
+{
+  "hash": "cd17c1d99214cca9bd6dddbcc4b97d3caef7a800",
+  "state": {
+    "actions": [],
+    "campaigns": [
+      {
+        "actions": [
+          {
+            "callback": {
+              "id": "sendEmail",
+              "opts": {
+                "view": "template1",
+              },
+            },
+            "id": "action1",
+            "interval": {
+              "offset": "1hours",
+            },
+          },
+          {
+            "callback": {
+              "id": "sendEmail",
+              "opts": {
+                "view": "template2",
+              },
+            },
+            "id": "action2",
+            "interval": {
+              "offset": "2hours",
+            },
+          },
+        ],
+        "active": true,
+        "id": "myCampaign",
+      },
+    ],
+    "schedules": [],
+  },
+}
+`;
+
+exports[`define state 4`] = `
+{
+  "hash": "1096469a6a88f0627efb8593a8a1d30886484780",
+  "state": {
+    "actions": [],
+    "campaigns": [
+      {
+        "actions": [
+          {
+            "callback": {
+              "id": "sendEmail",
+              "opts": {
+                "view": "template1",
+              },
+            },
+            "id": "action1",
+            "interval": {
+              "offset": "1hours",
+            },
+          },
+          {
+            "callback": {
+              "id": "sendEmail",
+              "opts": {
+                "view": "template2",
+              },
+            },
+            "id": "action2",
+            "interval": {
+              "offset": "2hours",
+            },
+          },
+        ],
+        "active": false,
+        "id": "myCampaign",
+      },
+    ],
+    "schedules": [],
+  },
+}
+`;

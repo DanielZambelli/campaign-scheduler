@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`calculate_actions validates 6 1`] = `
+{
+  "hash": "da81a8c8dcb8b30c36ae4dbcdf6ee48eab766e76",
+  "result": [
+    {
+      "actionId": "action1",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate1",
+      },
+      "campaignId": "campaign1",
+      "expectedAt": "in an hour",
+    },
+  ],
+}
+`;
+
+exports[`calculate_actions validates 7 1`] = `
+{
+  "hash": "585c647699ac9c9425d3d7fef95b73f5ac7a9e13",
+  "result": [
+    {
+      "actionId": "action1",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate1",
+      },
+      "campaignId": "campaign2",
+      "expectedAt": "in an hour",
+    },
+  ],
+}
+`;
+
+exports[`calculate_actions validates 8 1`] = `
+{
+  "hash": "c60aaecd927a4fccaf38362dda06e32a97d9fb3e",
+  "result": [
+    {
+      "actionId": "action1",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate1",
+      },
+      "campaignId": "campaign3",
+      "expectedAt": "in a day",
+    },
+    {
+      "actionId": "action2",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate1",
+      },
+      "campaignId": "campaign3",
+      "expectedAt": "in 2 days",
+    },
+  ],
+}
+`;
+
+exports[`calculate_actions validates 9 1`] = `
+[
+  {
+    "actionId": "action1",
+    "callbackId": "sendEmail",
+    "callbackOpts": {
+      "view": "emailTemplate1",
+    },
+    "campaignId": "campaign3",
+    "expectedAt": "in a day",
+    "subject": "contact#1",
+  },
+  {
+    "actionId": "action2",
+    "callbackId": "sendEmail",
+    "callbackOpts": {
+      "view": "emailTemplate1",
+    },
+    "campaignId": "campaign3",
+    "expectedAt": "in 2 days",
+    "subject": "contact#1",
+  },
+]
+`;
+
+exports[`calculate_actions validates 10 1`] = `
+{
+  "hash": "989db2448f309bfdd99b513f37c84b8f5794d2b5",
+  "result": [],
+}
+`;

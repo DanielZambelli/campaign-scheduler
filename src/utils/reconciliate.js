@@ -1,35 +1,28 @@
-const reconcileSchedule = async function(campaign, subject, subjectId){
+const reconcileSchedule = async function(campaign, subject){
   if(!campaign.active) return []
-  await this.Db.Actions.bulkCreate(campaign.getSchedule(subject, subjectId), { ignoreDuplicates: true })
-  return this.Db.Actions.findAll({ where: { campaignId: campaign.id, subject, subjectId } })
+  await this.db.Actions.bulkCreate(campaign.calculateActions(subject), { ignoreDuplicates: true })
+  return this.db.Actions.findAll({ where: { campaignId: campaign.id, subject } })
 }
 
-const reconcileUnschedule = async function(campaignId, subject, subjectId){
-  await this.stopWorkers()
-  const actions = await this.Db.Actions.destroy({ where: { subject, subjectId, campaignId, state: 'pending' } })
-  await this.startWorkers()
+const reconcileUnschedule = async function(campaignId, subject){
+  const actions = await this.db.Actions.destroy({ where: { subject, campaignId, state: 'pending' } })
   return actions
 }
 
 const reconcileCampaignChanged = async function(campaign){
-  await this.stopWorkers()
-  await this.Db.Actions.destroy({ where: { campaignId: campaign.id, state: 'pending' } })
-  await this.startWorkers()
+  await this.db.Actions.destroy({ where: { campaignId: campaign.id, state: 'pending' } })
   if(!campaign.active) return
-  const schedules = await this.Db.Schedules.findAll({
-    attributes: ['subject','subjectId'],
-    where: { campaignId: campaign.id, active: true }
+  const schedules = await this.db.Schedules.findAll({
+    attributes: ['subject'], where: { campaignId: campaign.id, active: true }
   })
   for(let i=0;i<schedules.length;i++){
     const schedule = schedules[i]
-    await this.Db.Actions.bulkCreate(campaign.getSchedule(schedule.subject, schedule.subjectId),{ ignoreDuplicates: true })
+    await this.db.Actions.bulkCreate(campaign.calculateActions(schedule.subject),{ ignoreDuplicates: true })
   }
 }
 
 const reconcileCampaignDeactivated = async function(campaignId){
-  await this.stopWorkers()
-  const actions = await this.Db.Actions.destroy({ where: { campaignId, state: 'pending' } })
-  await this.startWorkers()
+  const actions = await this.db.Actions.destroy({ where: { campaignId, state: 'pending' } })
   return actions
 }
 

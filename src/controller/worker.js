@@ -2,28 +2,10 @@ const PQueue = require('p-queue').default
 const {v4:uuid} = require('uuid')
 const ohash = require('object-hash')
 const moment = require('moment')
-const {cronOnce} = require('../../utils/cron')
-const {dateToCron} = require('../../utils/dateToCron')
+const {cronOnce} = require('../utils/cron')
+const {dateToCron} = require('../utils/dateToCron')
 
 class Worker{
-
-  static workers = {}
-
-  static get(id){
-    return Worker.workers[id]
-  }
-
-  static removeAll(){
-    return Promise.all(Object.values(Worker.workers).map(worker => worker.remove()))
-  }
-
-  static stopAll(){
-    return Promise.all(Object.values(Worker.workers).map(worker => worker.stop()))
-  }
-
-  static startAll(){
-    return Promise.all(Object.values(Worker.workers).map(worker => worker.start()))
-  }
 
   id = uuid()
   interval = null
@@ -31,19 +13,18 @@ class Worker{
   activeCrons = {}
   queuedActions = {}
 
-  constructor(ctl, concurrency=200, pollMs=10000, campaignIds=undefined){
+  constructor(ctl, callback, concurrency=200, pollInterval=10000){
     this.ctl = ctl
+    this.callback=callback
     this.concurrency=concurrency
-    this.pollMs=pollMs
-    this.campaignIds=campaignIds
-    Worker.workers[this.id] = this
+    this.pollInterval=pollInterval
     this.start()
   }
 
   async start(){
     if(this.interval) await this.stop()
     this.queue = new PQueue({concurrency: this.concurrency, autoStart: true})
-    this.interval = setInterval(() => this.tick(), this.pollMs)
+    this.interval = setInterval(() => this.tick(), this.pollInterval)
     this.tick()
   }
 
@@ -60,28 +41,24 @@ class Worker{
 
     // return queued actions
     const id = Object.values(this.queuedActions).map(e => e.id)
-    await ctl.Db.Actions.update({ state: 'pending' }, { where: { id, state: 'processing' } })
+    await ctl.db.Actions.update({ state: 'pending' }, { where: { id, state: 'processing' } })
     this.queuedActions = {}
-  }
-
-  async remove(){
-    if(this.interval) await this.stop()
-    delete Worker.workers[this.id]
   }
 
   async tick(){
     const limit = this.concurrency - this.queue.size
     if(limit == 0) return
-    const interval = Math.floor(this.pollMs/1000)+2
-    const actions = await this.ctl.Db.Actions.poll(interval, limit, this.campaignIds)
+    const interval = Math.floor(this.pollInterval/1000)+2
+    const actions = await this.ctl.db.Actions.poll(interval, limit)
     const jobs = actions.map(action => this._toJob(action))
     this.queue.addAll(jobs)
   }
 
   _toJob(action){
     const actionHash = ohash({
-      subject: action.subject, subjectId: action.subjectId,
-      campaignId: action.campaignId, actionId: action.actionId
+      subject: action.subject,
+      campaignId: action.campaignId,
+      actionId: action.actionId
     })
     this.queuedActions[actionHash] = action
     return () => {
@@ -103,17 +80,16 @@ class Worker{
       try{
         delete this.activeCrons[actionHash]
         delete this.queuedActions[actionHash]
-        await this.ctl.callbacks[action.callback.id]({
+        action.log = await this.callback({
           campaignId: action.campaignId,
           actionId: action.actionId,
           subject: action.subject,
-          subjectId: action.subjectId,
-          callback: action.callback,
-          workerId: this.id,
+          callback: { id:action.callbackId, ...action.callbackOpts }
         })
         action.state = 'completed'
       }catch(e){
         action.state = 'failed'
+        action.log = e.message
       }
       action.completedAt = moment()
       await action.save()
@@ -122,4 +98,21 @@ class Worker{
   }
 }
 
-module.exports = { Worker }
+/**
+ * Polls and trigger pending actions at the right time. See constructor `worker` options.
+ */
+const start = async function(){
+  if(this.worker) await this.worker.start()
+  else this.worker = new Worker(this, this.opts.worker.callback, this.opts.worker.concurrency, this.opts.worker.pollInterval)
+}
+
+/**
+ * Stops the worker and releases any queued actions.
+ */
+const stop = async function(){
+  if(this.worker) await this.worker.stop()
+}
+
+module.exports = {
+  start, stop
+}

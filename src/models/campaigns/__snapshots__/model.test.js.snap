@@ -3,13 +3,20 @@
 exports[`campaigns_model model 1`] = `
 [
   {
-    "actionDefs": {
+    "actions": {
       "Model": [Function],
       "_modelAttribute": true,
       "allowNull": false,
-      "field": "action_defs",
-      "fieldName": "actionDefs",
-      "type": JSONTYPE {},
+      "field": "actions",
+      "fieldName": "actions",
+      "get": [Function],
+      "set": [Function],
+      "type": TEXT {
+        "_length": "",
+        "options": {
+          "length": undefined,
+        },
+      },
     },
     "active": {
       "Model": [Function],

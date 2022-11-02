@@ -7,36 +7,33 @@ const rethrow = (e) => { console.log(e.message); throw e; }
 
 class DbContext{
 
-  opts = null
-  conn = null
-  Campaigns = null
-  Schedules = null
-  Actions = null
+  Connection
+  Actions
+  Schedules
+  Campaigns
 
   constructor(opts){
-    this.opts = opts.db
+    this.opts = opts
   }
 
   async init(){
-    this.conn = new Sequelize({ logging: false , ...this.opts })
-    await this.conn.authenticate().catch(rethrow)
-    if(this.opts.schema) await this.conn.createSchema(this.opts.schema).catch(rethrow)
+    this.Connection = this.opts.connectionString ? new Sequelize(this.opts.connectionString, this.opts) : new Sequelize(this.opts)
+    await this.Connection.authenticate().catch(rethrow)
+    if(this.opts.schema) await this.Connection.createSchema(this.opts.schema).catch(rethrow)
 
     this.Actions = initActionsModel(this)
     this.Schedules = initSchedulesModel(this)
     this.Campaigns = initCampaignsModel(this)
-    await this.conn.sync({ force: this.opts.force }).catch(rethrow)
-
-    return this
+    await this.Connection.sync({ force: this.opts.force }).catch(rethrow)
   }
 
   async close(){
-    await this.conn.close()
+    await this.Connection.close()
   }
 
   async destroy(){
-    if(!this.opts.makeDestroy) return
-    if(this.opts.schema) await this.conn.dropSchema(this.opts.schema).catch(rethrow)
+    if(!this.opts.allowDestroy) return
+    if(this.opts.schema) await this.Connection.dropSchema(this.opts.schema).catch(rethrow)
     else{
       await Promise.all([
         this.Actions.drop(),

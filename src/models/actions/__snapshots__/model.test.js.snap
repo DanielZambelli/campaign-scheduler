@@ -19,13 +19,34 @@ exports[`actions_model model 1`] = `
       },
       "unique": "unique_campaign_action",
     },
-    "callback": {
+    "callbackId": {
       "Model": [Function],
       "_modelAttribute": true,
       "allowNull": false,
-      "field": "callback",
-      "fieldName": "callback",
-      "type": JSONTYPE {},
+      "field": "callback_id",
+      "fieldName": "callbackId",
+      "type": STRING {
+        "_binary": undefined,
+        "_length": 255,
+        "options": {
+          "binary": undefined,
+          "length": undefined,
+        },
+      },
+    },
+    "callbackOpts": {
+      "Model": [Function],
+      "_modelAttribute": true,
+      "field": "callback_opts",
+      "fieldName": "callbackOpts",
+      "get": [Function],
+      "set": [Function],
+      "type": TEXT {
+        "_length": "",
+        "options": {
+          "length": undefined,
+        },
+      },
     },
     "campaignId": {
       "Model": [Function],
@@ -99,6 +120,20 @@ exports[`actions_model model 1`] = `
         "options": {},
       },
     },
+    "log": {
+      "Model": [Function],
+      "_modelAttribute": true,
+      "field": "log",
+      "fieldName": "log",
+      "type": STRING {
+        "_binary": undefined,
+        "_length": 255,
+        "options": {
+          "binary": undefined,
+          "length": undefined,
+        },
+      },
+    },
     "state": {
       "Model": [Function],
       "_modelAttribute": true,
@@ -137,23 +172,6 @@ exports[`actions_model model 1`] = `
           "binary": undefined,
           "length": undefined,
         },
-      },
-      "unique": "unique_campaign_action",
-    },
-    "subjectId": {
-      "Model": [Function],
-      "_modelAttribute": true,
-      "allowNull": false,
-      "field": "subject_id",
-      "fieldName": "subjectId",
-      "type": INTEGER {
-        "_decimals": undefined,
-        "_length": undefined,
-        "_precision": undefined,
-        "_scale": undefined,
-        "_unsigned": undefined,
-        "_zerofill": undefined,
-        "options": {},
       },
       "unique": "unique_campaign_action",
     },

@@ -1,6 +1,6 @@
 const moment = require('moment')
 const {dateToCron} = require('./dateToCron')
-const {cron} = require('./cron')
+const {cronOnce} = require('./cron')
 
 describe(dateToCron, () => {
 
@@ -12,7 +12,7 @@ describe(dateToCron, () => {
   it('crons', async () => {
     const cronString = dateToCron(moment().add(1, 'seconds').toDate())
     const res = await new Promise(res => {
-      cron(cronString, () => { res('hit') })
+      cronOnce(cronString, () => { res('hit') })
     })
     expect(res).toEqual('hit')
   })

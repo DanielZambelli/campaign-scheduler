@@ -1,6 +1,6 @@
 const close = async function(){
-  await this.removeWorkers()
-  await this.Db.close()
+  await this.stopWorker()
+  await this.db.close()
 }
 
 module.exports = close

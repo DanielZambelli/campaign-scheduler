@@ -1,16 +1,32 @@
 {
   "name": "campaign-scheduler",
-  "version": "4.0.3",
+  "version": "5.0.0",
+  "description": "Define and run campaign sequences for individual subjects better than anyone else!",
   "keywords": ["campaign-scheduler","campaign","scheduler","cron","queue","predefined schedule","sequence"],
+  "homepage": "https://github.com/DanielZambelli/campaign-scheduler",
+  "bugs": {
+    "url": "https://github.com/DanielZambelli/campaign-scheduler/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DanielZambelli/campaign-scheduler"
+  },
+  "author": "Daniel Zambelli (https://danielzambelli.dk)",
+  "license": "ISC",
+  "private": false,
+  "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "db": "docker run --name cs_pg --rm -e POSTGRES_PASSWORD=admin -p 8001:5432 -d postgres:latest && docker run --name cs_mysql --rm -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=db -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin -p 8002:3306 -d mysql:latest",
-    "db:stop": "docker stop cs_pg && docker stop cs_mysql",
-    "test:sqlite": "CS_DB='{ \"dialect\": \"sqlite\" }' jest",
-    "test:postgres": "CS_DB='{ \"dialect\": \"postgres\", \"host\": \"localhost\", \"port\": 8001, \"username\": \"postgres\", \"password\": \"admin\", \"database\": \"postgres\" }' jest",
+    "test":"CS_DB_STR='sqlite::memory' jest",
+    "test:watch":"CS_DB_STR='sqlite::memory' jest --watch",
+    "test:pg": "CS_DB_STR='postgresql://dz@localhost/postgres' jest",
+    "test:pg:watch": "CS_DB_STR='postgresql://dz@localhost/postgres' jest --watch",
+    "db": "docker run --name cs_pg --rm -e POSTGRES_PASSWORD=admin -p 8001:5432 -d postgres:latest && docker run --name cs_mysql --rm -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=db -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin -p 8002:3306 -d mysql:latest && docker run --name cs_mariadb -d --rm -e MARIADB_ROOT_PASSWORD=admin -e MARIADB_DATABASE=db -p 8003:3306 mariadb:latest",
+    "db:stop": "docker stop cs_pg && docker stop cs_mysql && docker stop cs_mariadb",
+    "test:sqlite": "CS_DB_STR='sqlite::memory' jest",
+    "test:postgres": "CS_DB_STR='postgres://postgres:admin@localhost:8001/postgres' jest",
     "test:mysql": "CS_DB='{ \"dialect\": \"mysql\", \"host\": \"localhost\", \"port\": 8002, \"username\": \"admin\", \"password\": \"admin\", \"database\": \"db\" }' jest",
-    "test:all": "npm run test:sqlite && npm run test:postgres && npm run test:mysql"
+    "test:mariadb": "CS_DB='{ \"dialect\": \"mariadb\", \"host\": \"localhost\", \"port\": 8003, \"username\": \"root\", \"password\": \"admin\", \"database\": \"db\" }' jest",
+    "test:all": "npm run test:sqlite && npm run test:postgres && npm run test:mysql && npm run test:mariadb"
   },
   "dependencies": {
     "cron": "2.1.0",

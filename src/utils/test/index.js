@@ -1,17 +1,51 @@
 const moment = require('moment')
 const ohash = require('object-hash')
-const {makeTestController} = require('../makeTestController')
+const Controller = require('../../..')
 
 global.log = require('../log').log
 global.ohash = require('object-hash')
 global.sleep = (ms) => new Promise(res => setTimeout(res, ms))
-
-global.initCtl = (testId, seed=undefined) => async () => {
-  global.ctl = await makeTestController(testId, {})
-  if(seed) global.seeds = await seed(ctl)
+global.startDelayStop = async (ms) => {
+  await ctl.start()
+  await sleep(ms)
+  await ctl.stop()
 }
 
-global.destroy = () => ctl.Db.destroy()
+global.init = (testId, seed=undefined, opts={}) => async () => {
+
+  // set db
+  if(process.env.CS_DB) opts.db = JSON.parse(process.env.CS_DB)
+  else if(process.env.CS_DB_STR) opts.db = { connectionString: process.env.CS_DB_STR }
+  else opts.db = { "dialect": "sqlite" }
+
+  if(opts.db?.connectionString.match(/sqlite/ig) || opts.db.dialect==='sqlite')
+    opts.db.storage = __dirname+`/../../../tmp/db_${testId}.sqlite`
+
+  opts.db.schema = `test_${testId}`
+  opts.db.force = true
+  opts.db.allowDestroy = true
+  opts.db.logging = false
+
+  // set worker
+  if(!opts.worker) opts.worker = {}
+  if(!opts.worker.callback) {
+    global.invoked = []
+    opts.worker.callback = (opts) => {
+      invoked.push(opts)
+      return 'successfully invoked'
+    }
+  }
+
+  // init
+  global.ctl = new Controller(opts)
+  await ctl.init()
+  if(seed) await seed(ctl)
+}
+
+global.destroy = async () => {
+  invoked = []
+  await ctl.db.destroy()
+}
 
 global.getState = async ({campaignId=undefined, contactId=undefined, actionsId=undefined}={}) => {
 
@@ -28,7 +62,7 @@ global.getState = async ({campaignId=undefined, contactId=undefined, actionsId=u
   if(actionsId) where3.actionId = actionsId
 
   const state = {
-    campaigns: await ctl.Db.Campaigns
+    campaigns: await ctl.db.Campaigns
       .findAll({
         attributes: { exclude: ['createdAt','updatedAt'] },
         where: where1,
@@ -36,7 +70,7 @@ global.getState = async ({campaignId=undefined, contactId=undefined, actionsId=u
       })
       .then(res => res.map(e => e.toJSON())),
 
-    schedules: await ctl.Db.Schedules
+    schedules: await ctl.db.Schedules
       .findAll({
         attributes: { exclude: ['id','createdAt','updatedAt'] },
         where: where2,
@@ -44,7 +78,7 @@ global.getState = async ({campaignId=undefined, contactId=undefined, actionsId=u
       })
       .then(res => res.map(e => e.toJSON())),
 
-    actions: await ctl.Db.Actions
+    actions: await ctl.db.Actions
       .findAll({
         attributes: { exclude: ['id','createdAt','updatedAt'] },
         where: where3,
