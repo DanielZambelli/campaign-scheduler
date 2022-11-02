@@ -280,8 +280,24 @@ exports[`controller getActions 1`] = `
 
 exports[`controller getActions 2`] = `
 {
-  "hash": "989db2448f309bfdd99b513f37c84b8f5794d2b5",
-  "result": [],
+  "hash": "6af8646e198824f5930891a39d4243d3161a697b",
+  "result": [
+    {
+      "actionId": "action5",
+      "callbackId": "sendEmail",
+      "callbackOpts": {
+        "view": "emailTemplate5",
+      },
+      "campaignId": "campaign3",
+      "completedAt": null,
+      "createdAt": "a few seconds ago",
+      "expectedAt": "a few seconds ago",
+      "log": null,
+      "state": "pending",
+      "subject": "contact#7",
+      "updatedAt": "a few seconds ago",
+    },
+  ],
 }
 `;
 

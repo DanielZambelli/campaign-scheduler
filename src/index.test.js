@@ -14,17 +14,17 @@ describe(TEST, () => {
   })
 
   it('getActions', async () => {
-    const res = await ctl.getActions({ subject: 'contact', subject: 'contact#4', actionId: 'action5' }).then(normalize)
+    const res = await ctl.getActions({ subject: 'contact#7', actionId: 'action5' }).then(normalize)
     expect(res).toMatchSnapshot()
   })
 
   it('getActions', async () => {
-    const res = await ctl.getActions({ subject: 'contact', subject: 'contact#4', limit: 3 }).then(normalize)
+    const res = await ctl.getActions({ subject: 'contact#4', limit: 3 }).then(normalize)
     expect(res).toMatchSnapshot()
   })
 
   it('getActions', async () => {
-    const res = await ctl.getActions({ subject: 'contact', subject: 'contact#1', limit: 3 }).then(normalize)
+    const res = await ctl.getActions({ subject: 'contact#1', limit: 3 }).then(normalize)
     expect(res).toMatchSnapshot()
   })
 
