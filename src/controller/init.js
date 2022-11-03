@@ -1,7 +1,7 @@
 const {DbContext} = require('../models/index')
 
 /**
- * Connects the database, creates the schema if provided and synchronizes the 3 tabels: cs_campaigns, cs_schedules and cs_actions.
+ * Connects to database, creates the schema (if provided) and synchronizes the 3 tabels: cs_campaigns, cs_schedules and cs_actions.
  * @returns Promise
  */
 const init = async function() {

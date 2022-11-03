@@ -1,6 +1,6 @@
 {
   "name": "campaign-scheduler",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Define and run campaign sequences for individual subjects better than anyone else!",
   "keywords": ["campaign-scheduler","campaign","scheduler","cron","queue","predefined schedule","sequence"],
   "homepage": "https://github.com/DanielZambelli/campaign-scheduler",

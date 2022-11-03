@@ -1,5 +1,5 @@
 # Campaign Scheduler
-**Define and run campaign sequences for individual subjects better than anyone else!** Useful for email campaigns, posting on social and use cases that should occur on a predefined schedule or sequence.
+**Define and run campaign sequences for individual subjects better than anyone else!** Useful for email campaigns, posting on social and use cases that should occur for a subject like a contact on a predefined schedule or sequence.
 
 <p align="left">
   <img width="150px" src="https://raw.githubusercontent.com/DanielZambelli/campaign-scheduler/master/icon.png" />
@@ -44,9 +44,9 @@ Cs.start()
 ## Background- The challenge
 Customers should receive a series of emails after a purchase. The first email should be sent immediately after the purchase event, subsequent emails should be offset by two days but always sent at 10:00 in the morning. 
 
-The system must support multiple customers at various time of purchase, and should keep track and avoid sending the same email twice. See example in the tabel below.
+The system must support multiple customers at various time of purchase, it should keep track and avoid sending the same email twice. See example in the tabel below.
 
-Checking spreadsheets and sending out emails manually is not exactly scalable, so why not automate it using the [after purchase campaign example](https://github.com/DanielZambelli/campaign-scheduler/blob/master/examples/afterPurchaseCampaign.js).
+Checking spreadsheets and sending out emails manually is not exactly scalable- so why not automate it using the [after purchase campaign example](https://github.com/DanielZambelli/campaign-scheduler/blob/master/examples/afterPurchaseCampaign.js).
 
 | Customer| Purchase | Email1 | Email2 | Email3 |
 |---------|-----------|---------|---------|---------|
@@ -71,7 +71,7 @@ Checking spreadsheets and sending out emails manually is not exactly scalable, s
 #### `constructor(options)`
 * `db`, object- database details passed to [Sequelize/ORM](https://sequelize.org/api/v6/class/src/sequelize.js~sequelize#instance-constructor-constructor)
   * `connectionString`, string, optional
-  * `dialect`, string, optional, defaults: sqlite- choose: postgres, mysql, sqlite. Remember to [install driver](https://sequelize.org/docs/v6/getting-started/)
+  * `dialect`, string, optional, defaults: sqlite- choose: postgres, mysql, sqlite. [Install driver](https://sequelize.org/docs/v6/getting-started/)
   * `storage`, string, optional, defaults: /tmp/db.sqlite- sqlite dialect storage file path
   * `host`, string, optional
   * `port`, integer, optional
@@ -82,24 +82,24 @@ Checking spreadsheets and sending out emails manually is not exactly scalable, s
   * `force`, boolean, optional, defaults: false- use cautiously, when true tabels are recreated dropping any data
   * `logging`, boolean, optional, defaults: false
 * `worker`, object
-  * `callback`, function- handle when actions are invoked
-  * `concurrency`, integer, optional, defaults: 200- number of actions to process concurrently
+  * `callback`, function- when its time to trigger an action, the callback is invoked
+  * `concurrency`, integer, optional, defaults: 200- actions to process concurrently
   * `pollInterval`, integer, optional, defaults: 15000- milliseconds between polls
 
 #### `init()`
-Connects the database, creates the schema if provided and synchronizes the 3 tabels: cs_campaigns, cs_schedules and cs_actions.
+Connects to database, creates the schema (if provided) and synchronizes the 3 tabels: cs_campaigns, cs_schedules and cs_actions.
 
 #### `define(campaign)`
-Saves or updates an existing campaign. Campaigns acts as templates and used when scheduling:
+Creates a new or update an existing campaign. Campaigns are templates defining actions and when they should trigger relatively e.g. in 2 days. Campaigns are used when scheduling:
 * `id`, string- e.g. "myCampaign1"
-* `active`, boolean, optional, defaults: false- inactivating a campaign removes its scheduled pending actions so that actions are not triggered. Activating a campaign reschdules pending actions.
+* `active`, boolean, optional, defaults: false- inactivating a campaign removes its scheduled pending actions so that actions are not triggered. Activating a campaign reschdules pending actions
 * `actions`, array of objects:
   * `id`, string- unique id e.g. "action1", once set **dont change it**, history depends on it.
   * `interval`, object- when should the scheduled action trigger e.g. { offset: '1day 2hours 25minutes' } or for a random datetime within a range {  offset: '2days-5days', time: '10:00-15:00'}
   * `callback`, object- passed to `worker.callback` function for dispatching. Reqiures `id` and optionally any other properties e.g. `{ id: 'sendEmail', view: 'msgTemplate1' }`
 
 #### `schedule(campaignId, subject)`
-Schedules campaign actions at the correct date time for the subject: 
+Schedules campaign actions for the specific date time (e.g. 2030-01-01-22:00) for the subject:
 * `campaignId`, string- e.g. "myCampaign1"
 * `subject`, string- e.g. "contact#1"
 
@@ -109,12 +109,15 @@ removes scheduled pending actions for a subject:
 * `subject`, string, optional- e.g. "contact#1"
 
 #### `start()`
-Polls and trigger pending actions at the right time. See constructor `worker` options.
+Polls and trigger pending actions at the right time. @see constructor `worker` options.
 
 #### `stop()`
 Stops the worker and releases any queued actions.
 
 #### `calculateActions(campaignId, subject=undefined)`
+Uses the campaign template to calculate pending actions with the specific date time:
+* `campaignId`, string- e.g. "myCampaign1"
+* `subject`, string, optional- e.g. "contact#1"
 
 #### `getCampaigns(options)`
 * `id`, string, optional- e.g. "myCampaign1"
@@ -139,10 +142,12 @@ Stops the worker and releases any queued actions.
 * `order`, array of array of string, optional- e.g. [['id','ASC'], ['createdAt','DESC']]
 
 #### `destroy(campaignId, confirm=false)`
-Destroys campaign and all associated schedule and action track and histroy. There is no going back from this.
+Destroys the campaign with its associated schedule and actions. There is no going back after this.
+* `campaignId`, string, optional- e.g. "myCampaign1"
+* `confirm`, boolean, optional, defaults: false- set to true to confirm the deletion
 
 #### `close()`
-Stops the worker and close the database connection.
+Stops the worker and closes the database connection.
 
 ## Road map
 * BUG: its 23:32 and schduling using interval: { offset: '0days', time: '09:00-17:00' } sets expected to today at 11:00 which is in the past and so its triggered immidetly, it should probably add one day here

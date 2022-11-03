@@ -1,5 +1,11 @@
 const {reconcileSchedule:reconcile} = require('../utils/reconciliate')
 
+/**
+ * Schedules campaign actions for the specific date time (e.g. 2030-01-01-22:00) for the subject:
+ * @param {string} campaignId e.g. "myCampaign1"
+ * @param {string} subject e.g. "contact#1"
+ * @returns Promise
+ */
 const schedule = async function(campaignId, subject){
 
   if(!campaignId || !subject) throw new Error('requires campaignId and subject')

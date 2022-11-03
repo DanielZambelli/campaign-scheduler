@@ -99,7 +99,8 @@ class Worker{
 }
 
 /**
- * Polls and trigger pending actions at the right time. See constructor `worker` options.
+ * Polls and trigger pending actions at the right time. @see constructor `worker` options.
+ * @returns Promise
  */
 const start = async function(){
   if(this.worker) await this.worker.start()
@@ -108,6 +109,7 @@ const start = async function(){
 
 /**
  * Stops the worker and releases any queued actions.
+ * @returns Promise
  */
 const stop = async function(){
   if(this.worker) await this.worker.stop()

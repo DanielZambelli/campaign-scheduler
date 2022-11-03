@@ -1,5 +1,5 @@
 /**
- * **Define and run campaign sequences for individual subjects better than anyone else!** Useful for email campaigns, posting on social and use cases that should occur on a predefined schedule or sequence.
+ * **Define and run campaign sequences for individual subjects better than anyone else!** Useful for email campaigns, posting on social and use cases that should occur for a subject like a contact on a predefined schedule or sequence.
  */
 class CampaignScheduler {
 
@@ -18,7 +18,7 @@ class CampaignScheduler {
    * @param {boolean} [opts.db.force=false] use cautiously, when true tabels are recreated dropping any
    * @param {boolean} [opts.db.logging]
    * @param {object} opts.worker
-   * @param {string} opts.worker.callback handle action invokes
+   * @param {function} opts.worker.callback when its time to trigger an action, the callback is invoked
    * @param {number} [opts.worker.concurrency=200] actions to process concurrently
    * @param {number} [opts.worker.pollInterval=15000] milliseconds between polls
    */

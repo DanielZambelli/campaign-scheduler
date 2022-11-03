@@ -2,11 +2,11 @@ const ohash = require('object-hash')
 const {reconcileCampaignChanged, reconcileCampaignDeactivated} = require('../utils/reconciliate')
 
 /**
- * Saves or updates an existing campaign. Campaigns acts as templates and used when scheduling:
+ * Creates a new or update an existing campaign. Campaigns are templates defining actions and when they should trigger relatively e.g. in 2 days. Campaigns are used when scheduling:
  * @param {object} campaign
- * @param {string} campaign.id
- * @param {boolean} campaign.active
- * @param {array} campaign.actions
+ * @param {string} campaign.id e.g. "myCampaign1"
+ * @param {boolean} [campaign.active=false] inactivating a campaign removes its scheduled pending actions so that actions are not triggered. Activating a campaign reschdules pending actions
+ * @param {{id: string,interval:object, callback:object}[]} [campaign.actions] @see API Reference
  * @returns Promise of Campaign
  */
 const define = async function(campaign){

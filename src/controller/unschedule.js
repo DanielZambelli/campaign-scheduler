@@ -2,8 +2,8 @@ const {reconcileUnschedule:reconcile} = require('../utils/reconciliate')
 
 /**
  * removes scheduled pending actions for a subject:
- * @param {string} campaignId
- * @param {string} subject
+ * @param {string} campaignId e.g. "myCampaign1"
+ * @param {string} subject e.g. "contact#1"
  * @returns Promise
  */
 const unschedule = async function(campaignId, subject){
