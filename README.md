@@ -150,11 +150,9 @@ Destroys the campaign with its associated schedule and actions. There is no goin
 Stops the worker and closes the database connection.
 
 ## Road map
-* BUG: its 23:32 and schduling using interval: { offset: '0days', time: '09:00-17:00' } sets expected to today at 11:00 which is in the past and so its triggered immidetly, it should probably add one day here
 * logging handling and callback, capture errors and send to log callback
 * mariadb schema is created as a database so for this dialect it should change db name... and handle connectionString better, maybe pass to sequlise and inspect sequlsie...
 * test oracle db
-
 * test load and performance, processing time and stability under loads
 * test worker for processing actions in parallel- e.g. by making two or more instances and pushing start
 * get status method- counting campaigns, schedules, actions (pending,completed, failed), drift time

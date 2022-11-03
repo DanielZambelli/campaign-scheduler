@@ -25,4 +25,18 @@ describe(parseInterval, () => {
     expect(a.isBetween(b,c)).toBeTruthy()
   })
 
+  it("offset: '0days', time: '08:00-16:00'", () => {
+    const startDate = moment().set({ hours: 5, minutes: 30 })
+    const date = parseInterval({ offset: '0days', time: '08:00-16:00' }, startDate)
+    const res = moment(date).isSame(startDate, 'days')
+    expect(res).toEqual(true)
+  })
+
+  it("offset: '0days', time: '08:00-16:00'", () => {
+    const startDate = moment().set({ hours: 20, minutes: 30 })
+    const date = parseInterval({ offset: '0days', time: '08:00-16:00' }, startDate)
+    const res = moment(date).isSame(startDate, 'days')
+    expect(res).toEqual(false)
+  })
+
 })
